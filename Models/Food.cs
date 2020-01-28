@@ -11,7 +11,7 @@ namespace ivend.Models
     public int Quantity { get; set; }
     public string GetVendingMachineItem()
     {
-      return $"{Location} - {Title} ${Price}";
+      return $"{Location} - {Title} {Price:c}";
     }
     public Food(string title, float price, string location, int quantity)
     {

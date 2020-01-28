@@ -1,12 +1,14 @@
 ﻿using System;
+using ivend.Controllers;
 
 namespace ivend
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+      IvendController ic = new IvendController();
+      ic.Run();
     }
+  }
 }

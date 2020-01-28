@@ -1,3 +1,4 @@
+using System;
 using ivend.Interfaces;
 
 namespace ivend.Models
@@ -11,7 +12,7 @@ namespace ivend.Models
     public string Location { get; set; }
     public string GetVendingMachineItem()
     {
-      return $"{Location} - {Title} ${Price}";
+      return $"{Location} - {Title} {Price:c}";
     }
     public Electronics(string title, float price, string location, int quantity)
     {
