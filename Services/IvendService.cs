@@ -12,10 +12,23 @@ namespace ivend.Services
     public List<string> Messages = new List<string>();
     public void PrintItems()
     {
+      Messages.Add("--Vending Maching Items--");
+      Messages.Add($"Credit: {Machine.Credit:c}\n");
       for (int i = 0; i < Machine.ItemList.Count; i++)
       {
         string item = Machine.ItemList[i].GetVendingMachineItem();
         Messages.Add($"{i + 1}.) {item}");
+      }
+      Messages.Add("\npress (d) to insert dime or (q) to quit");
+    }
+
+    public void IncreaseCredit(char coin)
+    {
+      switch (coin)
+      {
+        case 'd':
+          Machine.Credit += 0.10f;
+          break;
       }
     }
   }

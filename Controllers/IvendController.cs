@@ -14,8 +14,10 @@ namespace ivend.Controllers
       while (_running)
       {
         PrintMessages();
+        GetUserInput();
       }
-      _running = false;
+      Console.Clear();
+      Console.WriteLine("Goodbye");
     }
 
     private void PrintMessages()
@@ -26,5 +28,26 @@ namespace ivend.Controllers
       }
       Service.Messages.Clear();
     }
+    private void GetUserInput()
+    {
+      var key = Console.ReadKey();
+      Console.Clear();
+      var keyChar = key.KeyChar;
+      switch (keyChar)
+      {
+        case 'q':
+          _running = false;
+          break;
+        case 'd':
+          Service.IncreaseCredit('d');
+          Service.PrintItems();
+          break;
+        default:
+          Console.WriteLine("Invalid Selection");
+          Service.PrintItems();
+          break;
+      }
+    }
+
   }
 }
