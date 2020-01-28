@@ -13,7 +13,7 @@ namespace ivend.Models
     {
       return $"{Location} - {Title} ${Price}";
     }
-    public Electronics(string title, float price, int quantity, string location)
+    public Electronics(string title, float price, string location, int quantity)
     {
       Title = title;
       Price = price;
