@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ivend.Interfaces;
 using ivend.Models;
 
 namespace ivend.Services
@@ -12,24 +13,45 @@ namespace ivend.Services
     public List<string> Messages = new List<string>();
     public void PrintItems()
     {
-      Messages.Add("--Vending Maching Items--");
+      Messages.Add("--Vending Maching Items--\n");
       Messages.Add($"Credit: {Machine.Credit:c}\n");
       for (int i = 0; i < Machine.ItemList.Count; i++)
       {
         string item = Machine.ItemList[i].GetVendingMachineItem();
-        Messages.Add($"{i + 1}.) {item}");
+        Messages.Add($" {item}");
       }
-      Messages.Add("\npress (d) to insert dime or (q) to quit");
+      Messages.Add("\nPress (n) to insert nickel, (d) to insert dime or (q) to insert quarter");
+      Messages.Add("Press(o) to order");
+      Messages.Add("Press(e) to exit");
     }
 
     public void IncreaseCredit(char coin)
     {
       switch (coin)
       {
+        case 'n':
+          Machine.Credit += 0.05f;
+          break;
         case 'd':
           Machine.Credit += 0.10f;
           break;
+        case 'q':
+          Machine.Credit += 0.25f;
+          break;
       }
+    }
+
+    public void Purchase(string selection)
+    {
+      for (int i = 0; i < Machine.ItemList.Count; i++)
+      {
+        IPurchasable item = Machine.ItemList[i];
+        if (item.Location == selection.ToUpper())
+        {
+          Machine.ItemList.Remove(item);
+        }
+      }
+      return;
     }
   }
 }

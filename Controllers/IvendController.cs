@@ -35,11 +35,40 @@ namespace ivend.Controllers
       var keyChar = key.KeyChar;
       switch (keyChar)
       {
-        case 'q':
+        case 'e':
           _running = false;
           break;
+        case 'n':
         case 'd':
-          Service.IncreaseCredit('d');
+        case 'q':
+          Service.IncreaseCredit(keyChar);
+          Service.PrintItems();
+          break;
+        case 'o':
+          OrderInput();
+          break;
+        default:
+          Console.Clear();
+          Console.WriteLine("Invalid Selection");
+          Service.PrintItems();
+          break;
+      }
+    }
+
+    public void OrderInput()
+    {
+      Console.WriteLine("Enter Selection");
+      string selection = Console.ReadLine().ToUpper();
+      switch (selection)
+      {
+        case "E":
+          _running = false;
+          break;
+        case "A1":
+        case "A2":
+        case "B1":
+        case "B2":
+          Service.Purchase(selection);
           Service.PrintItems();
           break;
         default:

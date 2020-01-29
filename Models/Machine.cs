@@ -13,9 +13,9 @@ namespace ivend.Models
       Food burrito = new Food("Burrito", 2.00f, "A1", 5);
       Food noodles = new Food("Noodles", 0.50f, "A2", 7);
       Electronics headphones = new Electronics("Headphones", 4.90f, "B1", 3);
-      Electronics phoneCharger = new Electronics("Phone Charger", 9.99f, "B2", 5);
+      Electronics phoneCharger = new Electronics("Phone Charger", 10.00f, "B2", 5);
 
-      ItemList.AddRange(new IPurchasable[] { burrito, noodles, headphones });
+      ItemList.AddRange(new IPurchasable[] { burrito, noodles, headphones, phoneCharger });
     }
 
     public Machine()

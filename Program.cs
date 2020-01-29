@@ -7,6 +7,7 @@ namespace ivend
   {
     static void Main(string[] args)
     {
+      Console.Clear();
       IvendController ic = new IvendController();
       ic.Run();
     }
